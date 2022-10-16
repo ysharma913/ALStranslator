@@ -43,7 +43,7 @@ def classify(filepath):
 
     sig = nn.Sigmoid()
     labels = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    print(labels[net(im_tensor).argmax()])
+    return labels[net(im_tensor).argmax()] 
 
 
 
