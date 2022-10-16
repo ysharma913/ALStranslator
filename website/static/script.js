@@ -14,7 +14,7 @@ function startWebCam() {
 }
 
 function snapPicture() {
-    let picture = webcam.snap();
+    let picture = webcam.snap();    
     webcam.stop();
     document.getElementById('pictureButton').remove();
     webcamElement.remove();
@@ -40,19 +40,24 @@ function downloadImage(image) {
 }
 
 function classifyImage(fileName) {
-    dict = JSON.stringify({'fileName': fileName});
-    console.log(dict);
+    console.log(window.location.host);
+    // dict = JSON.stringify({'fileName': fileName});
+    console.log(fileName);
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/classify",
-        headers: "Access-Control-Allow-Origin: *",
-        data: dict,
+        url: "/classify",
+        // headers: "Access-Control-Allow-Origin: *",
+        data: fileName,
         dataType: 'json',
         contentType: "application/json",
-    }).then((text) => {
-        console.log("GET RESPONSE:");
-        console.log(text);
+        success: function(data){
+            console.log(data)
+        }
     });
+    // }).then((text) => {
+    //     console.log("GET RESPONSE:");
+    //     console.log(text);
+    // });
 }
 
 startWebCam();
