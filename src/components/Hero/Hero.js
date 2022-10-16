@@ -8,9 +8,9 @@ const Hero = () => {
 		<HeroSection>
 			<HeroVideo src="./assets/hero.mp4" autoPlay muted />
 			<Container>
-				<MainHeading>Your data is secure with us</MainHeading>
+				<MainHeading>Translate ASL to English </MainHeading>
 				<HeroText>
-					We provide the best security systems for clients all over the world
+					Use webcam input to learn American Sign Language
 				</HeroText>
 				<ButtonWrapper>
 					<Link to="signup">
