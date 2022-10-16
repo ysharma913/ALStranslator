@@ -41,23 +41,19 @@ function downloadImage(image) {
 
 function classifyImage(fileName) {
     console.log(window.location.host);
-    // dict = JSON.stringify({'fileName': fileName});
-    console.log(fileName);
+    dict = JSON.stringify({'fileName': fileName});
+    console.log(dict);
     $.ajax({
         type: "POST",
         url: "/classify",
-        // headers: "Access-Control-Allow-Origin: *",
-        data: fileName,
+        headers: "Access-Control-Allow-Origin: *",
+        data: dict,
         dataType: 'json',
         contentType: "application/json",
         success: function(data){
             console.log(data)
         }
     });
-    // }).then((text) => {
-    //     console.log("GET RESPONSE:");
-    //     console.log(text);
-    // });
 }
 
 startWebCam();
