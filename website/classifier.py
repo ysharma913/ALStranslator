@@ -13,7 +13,8 @@ def classify(filepath):
     # Crop the center of the image
     img = img.crop((left, top, right, bottom))
     im_small = img.resize((28, 28))
-    im_grey = im_small.convert('L')
+    im_grey = ImageOps.invert(im_small.convert('L'))
+    # im_grey.show()
     from torchvision import transforms
     from torch import FloatTensor
     import torch.nn.functional as F
@@ -22,9 +23,11 @@ def classify(filepath):
     mean: float =0.485 * 255
     std: float =0.229 * 255
     transform = transforms.Normalize(mean = [mean], std = [std])
-    im_tensor = 0.9 - ((im_tensor) / 255)
+    im_tensor = ((im_tensor) / 255)
     transform = transforms.Compose([transforms.ToPILImage()])
     img = transform(im_tensor.reshape(1,28,28))
+    # img.show()
+    
     import onnx
     import onnxruntime as ort
 
@@ -43,6 +46,7 @@ def classify(filepath):
 
     sig = nn.Sigmoid()
     labels = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    print(net(im_tensor).shape)
     return labels[net(im_tensor).argmax()]
 
 
