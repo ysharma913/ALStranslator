@@ -25,10 +25,14 @@
 <body>
     <h1 id="asltitle">ASL Translator</h1>
     <video id="webcam" autoplay playsinline width="480" height="360"></video>
-    <canvas id="canvas" class="d-none"></canvas>
+    <div style="text-align:center;">
+        <canvas id="canvas" class="d-none"></canvas>
+    </div?\>
     <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
     <button id="pictureButton" onclick="snapPicture()">Take Picture</button>
-
+    <div id="box">
+        <div id="classified"></div>
+    </div>
 </body>
 <footer>
     <script src="{{ url_for('static',filename='script.js')}}"></script>

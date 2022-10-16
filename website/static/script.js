@@ -51,7 +51,15 @@ function classifyImage(fileName) {
         dataType: 'json',
         contentType: "application/json",
         success: function(data){
-            console.log(data)
+            console.log(data);
+            let box = document.getElementById('box');
+            document.getElementById('classified').innerText += data;
+            let but = document.createElement("button");
+            but.innerHTML = "Take Another Picture";
+            but.setAttribute('onclick','window.location.reload()');
+            box.appendChild(but);
+            
+            // <button id="refresh" onclick="window.location.reload();">Take Another Picture</button>
         }
     });
 }

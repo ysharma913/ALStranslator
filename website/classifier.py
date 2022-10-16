@@ -14,15 +14,16 @@ def classify(filepath):
     img = img.crop((left, top, right, bottom))
     im_small = img.resize((28, 28))
     im_grey = ImageOps.invert(im_small.convert('L'))
+    # im_grey = im_small.convert('L')
     # im_grey.show()
     from torchvision import transforms
     from torch import FloatTensor
     import torch.nn.functional as F
     transform = transforms.Compose([transforms.PILToTensor()])
     im_tensor = transform(im_grey).type(FloatTensor).unsqueeze(0)
-    mean: float =0.485 * 255
-    std: float =0.229 * 255
-    transform = transforms.Normalize(mean = [mean], std = [std])
+    # mean: float =0.485 * 255
+    # std: float =0.229 * 255
+    # transform = transforms.Normalize(mean = [mean], std = [std])
     im_tensor = ((im_tensor) / 255)
     transform = transforms.Compose([transforms.ToPILImage()])
     img = transform(im_tensor.reshape(1,28,28))
