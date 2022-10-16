@@ -24,6 +24,7 @@ function snapPicture() {
 }
 
 function downloadImage(image) {
+    let fileName = "";
     $.ajax({
         type: "POST",
         url: "http://localhost:8000/index.php",
@@ -31,7 +32,26 @@ function downloadImage(image) {
             imgData: image
         }
     }).done(function(o) {
+        console.log(o);
+        fileName = o;
         console.log('saved'); 
+        classifyImage(fileName);
+    });
+}
+
+function classifyImage(fileName) {
+    dict = JSON.stringify({'fileName': fileName});
+    console.log(dict);
+    $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/classify",
+        headers: "Access-Control-Allow-Origin: *",
+        data: dict,
+        dataType: 'json',
+        contentType: "application/json",
+    }).then((text) => {
+        console.log("GET RESPONSE:");
+        console.log(text);
     });
 }
 
