@@ -9,6 +9,9 @@ Our project allows users to take pictures of their ASL signs with their webcam, 
 ## How we built it
 We decided to build the AI with a neural network trained on a dataset of ASL hand signs. Since the dataset consisted of small images of hand signs, when testing the AI afterwards with our own images, we needed downscale the image to size that the AI was used to seeing to make it work. Once on the web end side, we decided to use Vanilla JS and use the webcam-easy.js module for picture capturing. We used php server-side to be able to save the webcam picture to the local server. On top of this, we used flask as python back-end to call the Neural Network classifier and obtain the result of the picture.
 
+## Demonstration
+https://vimeo.com/760833765
+
 ## Challenges we ran into
 We ran into a few challenges when developing the web-end portion. We kept running into ajax request errors with GET/POST requests. Additionally, when implementing flask alongside the php server, we had a few issues connecting the backend to our project.
 
